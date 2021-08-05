@@ -12,12 +12,6 @@
             <tr><td style="text-align: right"><code>cycleway:both</code></td><td><code>no</code></td></tr>
             <tr><td style="text-align: right"><code>sidewalk:both</code></td><td><code>no</code></td></tr>
         </table></td>
-        <td><table>
-            <tr><td></td></tr>
-        </table></td>
-        <td><table>
-            <tr><td></td></tr>
-        </table></td>
     </tr>
     <tr>
         <td><img src="img_result/strasse5.png" height="300px"></td>
@@ -30,9 +24,6 @@
         <td><table>
             <tr><td style="text-align: right"><code>highway</code></td><td><code>footway</code></td></tr>
             <tr><td style="text-align: right"><code>footway</code></td><td><code>sidewalk</code></td></tr>
-        </table></td>
-        <td><table>
-            <tr><td></td></tr>
         </table></td>
     </tr>
     <tr>
@@ -53,9 +44,6 @@
             <tr><td style="text-align: right"><code>maxspeed:bicycle</code></td><td><code>walk</code></td></tr>
             <tr><td style="text-align: right"><code>traffic_sign</code></td><td><code>DE:239;1022-10</code></td></tr>
         </table></td>
-        <td><table>
-            <tr><td></td></tr>
-        </table></td>
     </tr>
     <tr>
         <td><img src="img_result/strasse3.1.png" height="300px"></td>
@@ -71,9 +59,6 @@
         <td><table>
             <tr><td style="text-align: right"><code>highway</code></td><td><code>footway</code></td></tr>
             <tr><td style="text-align: right"><code>footway</code></td><td><code>sidewalk</code></td></tr>
-        </table></td>
-        <td><table>
-            <tr><td></td></tr>
         </table></td>
     </tr>
     <tr>
@@ -92,9 +77,6 @@
             <tr><td style="text-align: right"><code>highway</code></td><td><code>footway</code></td></tr>
             <tr><td style="text-align: right"><code>footway</code></td><td><code>sidewalk</code></td></tr>
         </table></td>
-        <td><table>
-            <tr><td></td></tr>
-        </table></td>
     </tr>
     <tr>
         <td><img src="img_result/strasse4_rad.png" height="300px"></td>
@@ -111,9 +93,6 @@
         <td><table>
             <tr><td style="text-align: right"><code>highway</code></td><td><code>footway</code></td></tr>
             <tr><td style="text-align: right"><code>footway</code></td><td><code>sidewalk</code></td></tr>
-        </table></td>
-        <td><table>
-            <tr><td></td></tr>
         </table></td>
     </tr>
     <tr>
@@ -134,9 +113,6 @@
             <tr><td style="text-align: right"><code>segregated</code></td><td><code>no</code></td></tr>
             <tr><td style="text-align: right"><code>traffic_sign</code></td><td><code>DE:240</code></td></tr>
         </table></td>
-        <td><table>
-            <tr><td></td></tr>
-        </table></td>
     </tr>
     <tr>
         <td><img src="img_result/strasse2.1.1.png" height="300px"></td>
@@ -155,9 +131,6 @@
             <tr><td style="text-align: right"><code>foot</code></td><td><code>designated</code></td></tr>
             <tr><td style="text-align: right"><code>footway</code></td><td><code>sidewalk</code></td></tr>
             <tr><td style="text-align: right"><code>segregated</code></td><td><code>yes</code></td></tr>
-        </table></td>
-        <td><table>
-            <tr><td></td></tr>
         </table></td>
     </tr>
     <tr>
@@ -178,9 +151,6 @@
             <tr><td style="text-align: right"><code>footway</code></td><td><code>sidewalk</code></td></tr>
             <tr><td style="text-align: right"><code>segregated</code></td><td><code>yes</code></td></tr>
             <tr><td style="text-align: right"><code>traffic_sign</code></td><td><code>DE:241-30</code></td></tr>
-        </table></td>
-        <td><table>
-            <tr><td></td></tr>
         </table></td>
     </tr>
     <tr>
@@ -263,9 +233,6 @@
             <tr><td style="text-align: right"><code>segregated</code></td><td><code>yes</code></td></tr>
             <tr><td style="text-align: right"><code>footway</code></td><td><code>sidewalk</code></td></tr>
             <tr><td style="text-align: right"><code>traffic_sign</code></td><td><code>DE:241;1000-31</code></td></tr>
-        </table></td>
-        <td><table>
-            <tr><td></td></tr>
         </table></td>
     </tr>
     <tr>
