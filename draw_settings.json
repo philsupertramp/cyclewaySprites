@@ -1,0 +1,119 @@
+{
+    "cycleway": {
+        "ausgeschildert": {
+            "hochbord": {
+                "breite": {
+                    "min": 1.5,
+                    "opt": 2
+                },
+                "geh_rad": {
+                    "breite": {
+                        "min": 2.5,
+                        "opt": "?"
+                    }
+                },
+                "links": {
+                    "breite": {
+                        "min": 2,
+                        "opt": 2.4
+                    }
+                }
+            },
+            "radfahrstreifen": {
+                "breite": {
+                    "min": 1.6,
+                    "opt": "?"
+                },
+                "links": {
+                    "breite": {
+                        "min": "?",
+                        "opt": "?"
+                    }
+                }
+            }
+        },
+        "hochbord": {
+            "breite": {
+                "min": "?",
+                "opt": "?"
+            },
+            "geh_rad": {
+                "breite": {
+                    "min": "?",
+                    "opt": "?"
+                }
+            }
+        },
+        "schutzstreifen": {
+            "breite": {
+                "min": 1.25,
+                "opt": 1.5
+            },
+            "kernfahrbahn": {
+                "breite": {
+                    "min": 2.25,
+                    "opt": 3
+                }
+            },
+            "seitenlinie": {
+                "links": {
+                    "abstand": 1,
+                    "breite": "schmalstrich",
+                    "laenge": 1
+                },
+                "rechts": {
+                    "abstand": 0,
+                    "breite": "schmalstrich",
+                    "laenge": 1
+                }
+            }
+        }
+    },
+    "gehweg": {
+        "breite": {
+            "min": 2.5,
+            "old": 1.5
+        }
+    },
+    "gruenstreifen": {
+        "breite": {
+            "max": 1.5,
+            "min": 0
+        }
+    },
+    "pixel_pro_meter": 160,
+    "schild": {
+        "breite": {
+            "gross": 0.6,
+            "klein": 0.42
+        },
+        "groessenfaktor": 5,
+        "rund": {},
+        "zusatz": {
+            "breite": {
+                "gross": 0.6,
+                "klein": 0.42
+            }
+        }
+    },
+    "strasse": {
+        "bordstein": {
+            "breite": 0.165
+        },
+        "linie": {
+            "breitstrich": 0.25,
+            "leitlinie": {
+                "abstand": 6,
+                "breite": "schmalstrich",
+                "laenge": 3
+            },
+            "schmalstrich": 0.12,
+            "seitenlinie": {
+                "abstand": 0,
+                "breite": "schmalstrich",
+                "laenge": 1
+            }
+        },
+        "spurbreite": 3
+    }
+}

@@ -1,3 +1,5 @@
 img_result/*
 img_intermediate/*
 tagging.html
+
+__pycache__
