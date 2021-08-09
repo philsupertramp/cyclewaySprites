@@ -22,6 +22,8 @@ def main():
     group: typing.Dict
     for group in tags_group:
         draw_group(group)
+        print()
+        print()
 
 
 if __name__ == "__main__":
