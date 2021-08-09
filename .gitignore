@@ -3,3 +3,4 @@ img_intermediate/*
 tagging.html
 
 __pycache__
+*.svg
