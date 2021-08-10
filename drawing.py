@@ -17,9 +17,9 @@ class Drawing:
     file_name: str
     file_name_counter = 0
 
-    def __init__(self: 'Drawing', file_name: str = "default.svg") -> 'Drawing':
-        if file_name == "default.svg":
-            file_name = "default" + str(Drawing.file_name_counter) + ".svg"
+    def __init__(self: 'Drawing', file_name: str = "svg/default.svg") -> 'Drawing':
+        if file_name == "svg/default.svg":
+            file_name = "svg/default" + str(Drawing.file_name_counter) + ".svg"
             Drawing.file_name_counter += 1
         self.ways = []
         self.file_name = file_name
