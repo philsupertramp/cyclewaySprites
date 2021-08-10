@@ -1,0 +1,278 @@
+generating elements for way "Way 1" which has 3 tags
+
+
+
+generating elements for way "Way 1" which has 4 tags
+unrecognized tag "sidewalk:left"="no" found!
+unrecognized tag "sidewalk:right"="separate" found!
+
+generating elements for way "Way 2" which has 2 tags
+unrecognized tag "highway"="footway" found!
+{    'highway': 'footway',
+     'footway': 'sidewalk'}
+
+
+
+generating elements for way "Way 1" which has 6 tags
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "cycleway:right"="separate" found!
+unrecognized tag "bicycle:right"="optional_sidepath" found!
+unrecognized tag "sidewalk:left"="no" found!
+unrecognized tag "sidewalk:right"="separate" found!
+
+generating elements for way "Way 2" which has 6 tags
+unrecognized tag "highway"="footway" found!
+{    'highway': 'footway',
+     'footway': 'sidewalk',
+     'foot': 'designated',
+     'bicycle': 'yes',
+     'maxspeed:bicycle': 'walk',
+     'traffic_sign': 'DE:239;1022-10'}
+
+
+
+generating elements for way "Way 1" which has 7 tags
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "cycleway:right"="lane" found!
+unrecognized tag "cycleway:right:lane"="advisory" found!
+unrecognized tag "cycleway:right:lane:bicycle"="yes" found!
+unrecognized tag "sidewalk:left"="no" found!
+unrecognized tag "sidewalk:right"="separate" found!
+
+generating elements for way "Way 2" which has 2 tags
+unrecognized tag "highway"="footway" found!
+{    'highway': 'footway',
+     'footway': 'sidewalk'}
+
+
+
+generating elements for way "Way 1" which has 8 tags
+unrecognized value found for tag "lanes"="2"
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "cycleway:right"="lane" found!
+unrecognized tag "cycleway:right:lane"="advisory" found!
+unrecognized tag "cycleway:right:lane:bicycle"="yes" found!
+unrecognized tag "sidewalk:left"="no" found!
+unrecognized tag "sidewalk:right"="separate" found!
+
+generating elements for way "Way 2" which has 2 tags
+unrecognized tag "highway"="footway" found!
+{    'highway': 'footway',
+     'footway': 'sidewalk'}
+
+
+
+generating elements for way "Way 1" which has 8 tags
+unrecognized value found for tag "lanes"="2"
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "cycleway:right"="lane" found!
+unrecognized tag "cycleway:right:lane"="exclusive" found!
+unrecognized tag "cycleway:right:lane:bicycle"="designated" found!
+unrecognized tag "sidewalk:left"="no" found!
+unrecognized tag "sidewalk:right"="separate" found!
+
+generating elements for way "Way 2" which has 2 tags
+unrecognized tag "highway"="footway" found!
+{    'highway': 'footway',
+     'footway': 'sidewalk'}
+
+
+
+generating elements for way "Way 1" which has 6 tags
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "sidewalk:left"="no" found!
+unrecognized tag "cycleway:right"="separate" found!
+unrecognized tag "bicycle:right"="use_sidepath" found!
+unrecognized tag "sidewalk:right"="separate" found!
+
+generating elements for way "Way 2" which has 6 tags
+unrecognized tag "highway"="path" found!
+{    'highway': 'path',
+     'footway': 'sidewalk',
+     'foot': 'designated',
+     'bicycle': 'designated',
+     'segregated': 'no',
+     'traffic_sign': 'DE:240'}
+
+
+
+generating elements for way "Way 1" which has 6 tags
+unrecognized tag "cycleway:right"="separate" found!
+unrecognized tag "bicycle:right"="optional_sidepath" found!
+unrecognized tag "sidewalk:right"="separate" found!
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "sidewalk:left"="no" found!
+
+generating elements for way "Way 2" which has 6 tags
+unrecognized tag "highway"="path" found!
+{    'highway': 'path',
+     'bicycle': 'yes',
+     'bicycle:oneway': 'yes',
+     'foot': 'designated',
+     'footway': 'sidewalk',
+     'segregated': 'yes'}
+
+
+
+generating elements for way "Way 1" which has 6 tags
+unrecognized tag "cycleway:right"="separate" found!
+unrecognized tag "bicycle:right"="use_sidepath" found!
+unrecognized tag "sidewalk:right"="separate" found!
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "sidewalk:left"="no" found!
+
+generating elements for way "Way 2" which has 7 tags
+unrecognized tag "highway"="path" found!
+{    'highway': 'path',
+     'bicycle': 'designated',
+     'bicycle:oneway': 'yes',
+     'foot': 'designated',
+     'footway': 'sidewalk',
+     'segregated': 'yes',
+     'traffic_sign': 'DE:241-30'}
+
+
+
+generating elements for way "Way 1" which has 6 tags
+unrecognized tag "cycleway:right"="separate" found!
+unrecognized tag "bicycle:right"="optional_sidepath" found!
+unrecognized tag "sidewalk:right"="separate" found!
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "sidewalk:left"="no" found!
+
+generating elements for way "Way 2" which has 3 tags
+unrecognized tag "highway"="cycleway" found!
+{    'highway': 'cycleway',
+     'bicycle': 'yes',
+     'bicycle:oneway': 'yes'}
+
+generating elements for way "Way 3" which has 2 tags
+unrecognized tag "highway"="footway" found!
+{    'highway': 'footway',
+     'footway': 'sidewalk'}
+
+
+
+generating elements for way "Way 1" which has 6 tags
+unrecognized tag "cycleway:right"="separate" found!
+unrecognized tag "bicycle:right"="use_sidepath" found!
+unrecognized tag "sidewalk:right"="separate" found!
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "sidewalk:left"="no" found!
+
+generating elements for way "Way 2" which has 4 tags
+unrecognized tag "highway"="cycleway" found!
+{    'highway': 'cycleway',
+     'bicycle': 'designated',
+     'bicycle:oneway': 'yes',
+     'traffic_sign': 'DE:237'}
+
+generating elements for way "Way 3" which has 2 tags
+unrecognized tag "highway"="footway" found!
+{    'highway': 'footway',
+     'footway': 'sidewalk'}
+
+
+
+generating elements for way "Way 1" which has 6 tags
+unrecognized tag "cycleway:right"="separate" found!
+unrecognized tag "bicycle:both"="use_sidepath" found!
+unrecognized tag "sidewalk:right"="separate" found!
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "sidewalk:left"="no" found!
+
+generating elements for way "Way 2" which has 4 tags
+unrecognized tag "highway"="cycleway" found!
+{    'highway': 'cycleway',
+     'bicycle': 'designated',
+     'bicycle:oneway': 'no',
+     'traffic_sign': 'DE:237;1000-31'}
+
+generating elements for way "Way 3" which has 2 tags
+unrecognized tag "highway"="footway" found!
+{    'highway': 'footway',
+     'footway': 'sidewalk'}
+
+
+
+generating elements for way "Way 1" which has 6 tags
+unrecognized tag "cycleway:right"="separate" found!
+unrecognized tag "bicycle:both"="use_sidepath" found!
+unrecognized tag "sidewalk:right"="separate" found!
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "sidewalk:left"="no" found!
+
+generating elements for way "Way 2" which has 7 tags
+unrecognized tag "highway"="path" found!
+{    'highway': 'path',
+     'bicycle': 'designated',
+     'foot': 'designated',
+     'bicycle:oneway': 'no',
+     'segregated': 'yes',
+     'footway': 'sidewalk',
+     'traffic_sign': 'DE:241;1000-31'}
+
+
+
+generating elements for way "Way 1" which has 6 tags
+unrecognized tag "cycleway:right"="separate" found!
+unrecognized tag "bicycle:right"="optional_sidepath" found!
+unrecognized tag "sidewalk:right"="separate" found!
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "sidewalk:left"="no" found!
+
+generating elements for way "Way 2" which has 3 tags
+unrecognized tag "highway"="cycleway" found!
+{    'highway': 'cycleway',
+     'bicycle': 'yes',
+     'bicycle:oneway': 'yes'}
+
+generating elements for way "Way 3" which has 2 tags
+unrecognized tag "highway"="footway" found!
+{    'highway': 'footway',
+     'footway': 'sidewalk'}
+
+
+
+generating elements for way "Way 1" which has 6 tags
+unrecognized tag "cycleway:right"="separate" found!
+unrecognized tag "bicycle:right"="use_sidepath" found!
+unrecognized tag "sidewalk:right"="separate" found!
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "sidewalk:left"="no" found!
+
+generating elements for way "Way 2" which has 4 tags
+unrecognized tag "highway"="cycleway" found!
+{    'highway': 'cycleway',
+     'bicycle': 'designated',
+     'bicycle:oneway': 'yes',
+     'traffic_sign': 'DE:237'}
+
+generating elements for way "Way 3" which has 2 tags
+unrecognized tag "highway"="footway" found!
+{    'highway': 'footway',
+     'footway': 'sidewalk'}
+
+
+
+generating elements for way "Way 1" which has 6 tags
+unrecognized tag "cycleway:right"="separate" found!
+unrecognized tag "bicycle:both"="use_sidepath" found!
+unrecognized tag "sidewalk:right"="separate" found!
+unrecognized tag "cycleway:left"="no" found!
+unrecognized tag "sidewalk:left"="no" found!
+
+generating elements for way "Way 2" which has 4 tags
+unrecognized tag "highway"="cycleway" found!
+{    'highway': 'cycleway',
+     'bicycle': 'designated',
+     'bicycle:oneway': 'no',
+     'traffic_sign': 'DE:237;1000-31'}
+
+generating elements for way "Way 3" which has 2 tags
+unrecognized tag "highway"="footway" found!
+{    'highway': 'footway',
+     'footway': 'sidewalk'}
+
+
+

@@ -138,7 +138,7 @@ class Way:
         self.count = count
         self.total = total
 
-        # print('"' + self.name + '"', "has", len(self.tags), "tags:")
+        print('generating elements for way "' + self.name + '" which has', len(self.tags), "tags")
         if "highway" in self.tags:
             if self.tags["highway"] in self.recognized_tags["highway"]:
 
@@ -207,7 +207,6 @@ class Way:
                 self.elems.append(highway_bordstein)
                 self.elems.append(bordstein)
 
-                print(self.count, self.total)
                 if not self.count + 1 < self.total:
                     self.elems.append(gruenstreifen)
 
