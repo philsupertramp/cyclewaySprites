@@ -69,6 +69,7 @@
             }
         }
     },
+    "draw_height_meter": 12.5,
     "gehweg": {
         "breite": {
             "min": 2.5,
@@ -81,7 +82,7 @@
             "min": 0
         }
     },
-    "pixel_pro_meter": 160,
+    "pixel_pro_meter": 100,
     "schild": {
         "breite": {
             "gross": 0.6,
@@ -98,14 +99,20 @@
     },
     "strasse": {
         "bordstein": {
-            "breite": 0.165
+            "abstand": 0.05,
+            "background_colour": "#a5a5a7",
+            "breite": 0.165,
+            "colour": "#909092",
+            "laenge": 1
         },
+        "colour": "#68676e",
         "linie": {
             "breitstrich": 0.25,
+            "colour": "#dce0df",
             "leitlinie": {
-                "abstand": 6,
+                "abstand": 4,
                 "breite": "schmalstrich",
-                "laenge": 3
+                "laenge": 2
             },
             "schmalstrich": 0.12,
             "seitenlinie": {

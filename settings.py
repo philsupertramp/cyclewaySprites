@@ -36,6 +36,8 @@ def set_default_settings(settings_data: typing.Dict) -> None:
         bordstein = strasse.setdefault("bordstein", {})
         with scoping():
             bordstein.setdefault("breite", 0.165)
+            bordstein.setdefault("laenge", 1)
+            bordstein.setdefault("abstand", 0.01)
 
         linie = strasse.setdefault("linie", {})
         with scoping():
@@ -141,6 +143,7 @@ def set_default_settings(settings_data: typing.Dict) -> None:
                     breite.setdefault("opt", 3)
 
     pixel_pro_meter = settings_data.setdefault("pixel_pro_meter", 160)
+    draw_height_meter = settings_data.setdefault("draw_height_meter", 10)
 
     schild = settings_data.setdefault("schild", {})
     with scoping():

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from settings import set_default_settings,get_draw_settings, write_draw_settings
-from tagging import get_example_tags, get_tags
+from tagging import get_tags
 import drawing
 import json
 import typing
@@ -22,12 +22,12 @@ def main():
     group: typing.Dict
     for group in tags_group:
         d_file = drawing.Drawing()
-        d_file.draw_group(group)
-        d_file.add_test_elems()
+        d_file.add_group(group)
+        d_file.draw()
         d_file.save()
         print()
         print()
-        break # for now, after first road only example
+        #break # for now, after first road only example
 
 
 if __name__ == "__main__":
