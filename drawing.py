@@ -131,6 +131,83 @@ class Way:
 
     elems: typing.List[Way_Element]
 
+    def filter_tags(self: 'Way') -> typing.Dict:
+        filtered_tags = {}
+        for tag, value in self.tags.items():
+            if tag not in self.recognized_tags:
+                print('unrecognized tag "'+tag+'"="'+value+'"', "found!")
+            elif value not in self.recognized_tags[tag]:
+                print('unrecognized value found for tag "'+tag+'"="'+value+'"')
+            else:
+                # print('"' + tag + '"="' + value + '"', "found!")
+                filtered_tags[tag] = value
+        return filtered_tags
+
+    def create_elements_highway_road(self: 'Way') -> None:
+        tags = self.filter_tags()
+
+        tags.setdefault("lanes", "2")
+        tags.setdefault("divider", "dashed_line")
+
+        # seitenlinie, beide seiten, linie, abstand zu bordstein
+        lane_markings_width = draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["seitenlinie"]["breite"] ] * 2 * 2
+        if tags["divider"] != "no":
+            # leitlinie, mittig
+            lane_markings_width += draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["leitlinie"]["breite"] ]
+
+        tags.setdefault("width:carriageway", )
+
+        # platz zwischen bordstein und seitenlinie
+        bordstein_line_sep  = Way_Element(draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["seitenlinie"]["breite"] ]*2,
+                                            draw_settings["draw_height_meter"],
+                                            "gray")
+        seitenlinie        = Way_Element(draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["seitenlinie"]["breite"] ],
+                                            draw_settings["draw_height_meter"],
+                                            draw_settings["strasse"]["linie"]["colour"])
+        if tags["divider"] != "no":
+            leitlinie          = Way_Element(draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["leitlinie"]["breite"] ],
+                                                draw_settings["strasse"]["linie"]["leitlinie"]["laenge"],
+                                                draw_settings["strasse"]["linie"]["colour"])
+            if tags["divider"] == "dashed_line":
+                leitlinie.set_distance(draw_settings["strasse"]["linie"]["leitlinie"]["abstand"],
+                                        draw_settings["strasse"]["colour"])
+                leitlinie._height = draw_settings["strasse"]["linie"]["leitlinie"]["laenge"]
+            elif tags["divider"] == "solid_line":
+                # do not set distance
+                leitlinie._height = draw_settings["draw_height_meter"]
+
+        highway_lane       = Way_Element(draw_settings["strasse"]["spurbreite"],
+                                         draw_settings["draw_height_meter"],
+                                         draw_settings["strasse"]["colour"])
+        bordstein          = Way_Element(draw_settings["strasse"]["bordstein"]["breite"],
+                                         draw_settings["strasse"]["bordstein"]["laenge"],
+                                         draw_settings["strasse"]["bordstein"]["colour"])
+        bordstein.set_distance(draw_settings["strasse"]["bordstein"]["abstand"],
+                               draw_settings["strasse"]["bordstein"]["background_colour"])
+        gruenstreifen      = Way_Element(draw_settings["gruenstreifen"]["breite"]["max"], draw_settings["draw_height_meter"], "green")
+
+        # add gruenstreifen if first way
+        if self.count == 0:
+            self.elems.append(gruenstreifen)
+        self.elems.append(bordstein)
+        self.elems.append(bordstein_line_sep)
+        self.elems.append(seitenlinie)
+
+        # add road lanes and lane markings
+        for lane_num in range(int(tags["lanes"])):
+            self.elems.append(highway_lane)
+            if int(tags["lanes"]) > 1 and lane_num +1 < int(tags["lanes"]):
+                if leitlinie:
+                    self.elems.append(leitlinie)
+
+        self.elems.append(seitenlinie)
+        self.elems.append(bordstein_line_sep)
+        self.elems.append(bordstein)
+
+        # add gruenstreifen on the right, if last way
+        if not self.count + 1 < self.total:
+            self.elems.append(gruenstreifen)
+
     def __init__(self: 'Way', name, tags, count: int, total: int) -> 'Way':
         self.elems = []
         self.name  = name
@@ -141,74 +218,8 @@ class Way:
         print('generating elements for way "' + self.name + '" which has', len(self.tags), "tags")
         if "highway" in self.tags:
             if self.tags["highway"] in self.recognized_tags["highway"]:
-
-                highway_tags = {}
-                for tag, value in self.tags.items():
-                    if tag not in self.recognized_tags:
-                        print('unrecognized tag "'+tag+'"="'+value+'"', "found!")
-                    elif value not in self.recognized_tags[tag]:
-                        print('unrecognized value found for tag "'+tag+'"="'+value+'"')
-                    else:
-                        # print('"' + tag + '"="' + value + '"', "found!")
-                        highway_tags[tag] = value
-
-                highway_tags.setdefault("lanes", "2")
-                highway_tags.setdefault("divider", "dashed_line")
-
-                # seitenlinie, beide seiten, linie, abstand zu bordstein
-                lane_markings_width = draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["seitenlinie"]["breite"] ] * 2 * 2
-                if highway_tags["divider"] != "no":
-                    # leitlinie, mittig
-                    lane_markings_width += draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["leitlinie"]["breite"] ]
-
-                highway_tags.setdefault("width:carriageway", )
-
-                # platz zwischen bordstein und seitenlinie
-                highway_bordstein  = Way_Element(draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["seitenlinie"]["breite"] ]*2,
-                                                 draw_settings["draw_height_meter"],
-                                                 "gray")
-                seitenlinie        = Way_Element(draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["seitenlinie"]["breite"] ],
-                                                 draw_settings["draw_height_meter"],
-                                                 draw_settings["strasse"]["linie"]["colour"])
-                if highway_tags["divider"] != "no":
-                    leitlinie          = Way_Element(draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["leitlinie"]["breite"] ],
-                                                     draw_settings["strasse"]["linie"]["leitlinie"]["laenge"],
-                                                     draw_settings["strasse"]["linie"]["colour"])
-                    if highway_tags["divider"] == "dashed_line":
-                        leitlinie.set_distance(draw_settings["strasse"]["linie"]["leitlinie"]["abstand"],
-                                               draw_settings["strasse"]["colour"])
-                        leitlinie._height = draw_settings["strasse"]["linie"]["leitlinie"]["laenge"]
-                    elif highway_tags["divider"] == "solid_line":
-                        # do not set distance
-                        leitlinie._height = draw_settings["draw_height_meter"]
-
-                highway_lane       = Way_Element(draw_settings["strasse"]["spurbreite"],
-                                                 draw_settings["draw_height_meter"],
-                                                 draw_settings["strasse"]["colour"])
-                bordstein   = Way_Element(draw_settings["strasse"]["bordstein"]["breite"],
-                                                 draw_settings["strasse"]["bordstein"]["laenge"],
-                                                 draw_settings["strasse"]["bordstein"]["colour"])
-                bordstein.set_distance(draw_settings["strasse"]["bordstein"]["abstand"],
-                                              draw_settings["strasse"]["bordstein"]["background_colour"])
-                gruenstreifen      = Way_Element(draw_settings["gruenstreifen"]["breite"]["max"], draw_settings["draw_height_meter"], "green")
-
-                self.elems.append(gruenstreifen)
-                self.elems.append(bordstein)
-                self.elems.append(highway_bordstein)
-                self.elems.append(seitenlinie)
-
-                for lane_num in range(int(highway_tags["lanes"])):
-                    self.elems.append(highway_lane)
-                    if int(highway_tags["lanes"]) > 1 and lane_num +1 < int(highway_tags["lanes"]):
-                        if leitlinie:
-                            self.elems.append(leitlinie)
-
-                self.elems.append(seitenlinie)
-                self.elems.append(highway_bordstein)
-                self.elems.append(bordstein)
-
-                if not self.count + 1 < self.total:
-                    self.elems.append(gruenstreifen)
+                if self.tags["highway"] == "road":
+                    self.create_elements_highway_road()
 
             else: # unknown highway value
                 print('unrecognized tag "highway"=' + '"' + self.tags["highway"] + '"', "found!")
