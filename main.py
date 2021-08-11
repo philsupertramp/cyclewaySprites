@@ -27,7 +27,6 @@ def main():
         d_file.save()
         #break # for now, after first road only example
 
-
 if __name__ == "__main__":
     main()
 

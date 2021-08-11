@@ -122,16 +122,22 @@ class Way:
     count: int
     total: int
 
-    recognized_tags = {"highway":           {"road"},
-                       "cycleway:both":     {"no", "separate"},
-                       "cycleway:left":     {"no", "separate"},
-                       "cycleway:right":    {"no", "separate"},
-                       "bicycle:both":      {"use_sidepath", "optional_sidepath"},
-                       "bicycle:left":      {"use_sidepath", "optional_sidepath"},
-                       "bicycle:right":     {"use_sidepath", "optional_sidepath"},
-                       "sidewalk:both":     {"no", "separate"},
-                       "sidewalk:left":     {"no", "separate"},
-                       "sidewalk:right":    {"no", "separate"},
+    recognized_tags = {"highway":           {"road", "footway", "cycleway", "path"},
+                       "cycleway:both":     {"no", "separate"}, # ignore
+                       "cycleway:left":     {"no", "separate"}, # ignore
+                       "cycleway:right":    {"no", "separate"}, # ignore
+                       "bicycle:both":      {"use_sidepath", "optional_sidepath"}, # ignore
+                       "bicycle:left":      {"use_sidepath", "optional_sidepath"}, # ignore
+                       "bicycle:right":     {"use_sidepath", "optional_sidepath"}, # ignore
+                       "bicycle":           {},
+                       "bicycle:oneway":    {},
+                       "foot":              {},
+                       "footway":           {"sidewalk"}, # ignore
+                       "segregated":        {},
+                       "traffic_sign":      {},
+                       "sidewalk:both":     {"no", "separate"}, # ignore
+                       "sidewalk:left":     {"no", "separate"}, # ignore
+                       "sidewalk:right":    {"no", "separate"}, # ignore
                        "width:carriageway": {},
                        "lanes":             {"1", "2", "3", "4"},
                        "divider":           {"dashed_line", "solid_line", "no"}}
@@ -222,6 +228,70 @@ class Way:
         if not self.count + 1 < self.total:
             self.elems.append(gruenstreifen)
 
+    def create_elements_highway_footway(self: 'Way') -> None:
+        tags = self.filter_tags()
+
+        highway_footway = Way_Element(draw_settings["gehweg"]["breite"]["min"],
+                                      draw_settings["draw_height_meter"],
+                                      draw_settings["gehweg"]["colour"])
+        gruenstreifen = self.make_gruenstreifen_elem()
+
+        # add gruenstreifen if first way
+        if self.count == 0:
+            self.elems.append(gruenstreifen)
+
+        # TODO traffic_sign="*"
+        # TODO bicycle="yes"
+        # TODO segregated="yes|no"
+
+        self.elems.append(highway_footway)
+
+        # add gruenstreifen on the right, if last way
+        if not self.count + 1 < self.total:
+            self.elems.append(gruenstreifen)
+
+    def create_elements_highway_cycleway(self: 'Way') -> None:
+        tags = self.filter_tags()
+
+        highway_cycleway = Way_Element(draw_settings["cycleway"]["ausgeschildert"]["hochbord"]["breite"]["opt"],
+                                       draw_settings["draw_height_meter"],
+                                       draw_settings["cycleway"]["colour"])
+        gruenstreifen = self.make_gruenstreifen_elem()
+
+        # add gruenstreifen if first way
+        if self.count == 0:
+            self.elems.append(gruenstreifen)
+
+        # TODO traffic_sign="*"
+        # TODO segregated="yes|no"
+
+        self.elems.append(highway_cycleway)
+
+        # add gruenstreifen on the right, if last way
+        if not self.count + 1 < self.total:
+            self.elems.append(gruenstreifen)
+
+    def create_elements_highway_path(self: 'Way') -> None:
+        tags = self.filter_tags()
+
+        highway_path = Way_Element(draw_settings["gehweg"]["breite"]["min"],
+                                   draw_settings["draw_height_meter"],
+                                   "#745d4c") # TODO
+        gruenstreifen = self.make_gruenstreifen_elem()
+
+        # add gruenstreifen if first way
+        if self.count == 0:
+            self.elems.append(gruenstreifen)
+
+        # TODO traffic_sign="*"
+        # TODO segregated="yes|no"
+
+        self.elems.append(highway_path)
+
+        # add gruenstreifen on the right, if last way
+        if not self.count + 1 < self.total:
+            self.elems.append(gruenstreifen)
+
     def __init__(self: 'Way', name, tags, count: int, total: int) -> 'Way':
         self.elems = []
         self.name  = name
@@ -231,10 +301,14 @@ class Way:
 
         #print('generating elements for way "' + self.name + '" which has', len(self.tags), "tags")
         if "highway" in self.tags:
-            if self.tags["highway"] in self.recognized_tags["highway"]:
-                if self.tags["highway"] == "road":
-                    self.create_elements_highway_road()
-
+            if   self.tags["highway"] == "road":
+                self.create_elements_highway_road()
+            elif self.tags["highway"] == "footway":
+                self.create_elements_highway_footway()
+            elif self.tags["highway"] == "cycleway":
+                self.create_elements_highway_cycleway()
+            elif self.tags["highway"] == "path":
+                self.create_elements_highway_path()
             else: # unknown highway value
                 print('    unrecognized tag "highway"=' + '"' + self.tags["highway"] + '"', "found!")
                 #pprint(self.tags, indent=5, compact=False, sort_dicts=False, width=1)
