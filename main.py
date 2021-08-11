@@ -25,8 +25,6 @@ def main():
         d_file.add_group(group)
         d_file.draw()
         d_file.save()
-        print()
-        print()
         #break # for now, after first road only example
 
 

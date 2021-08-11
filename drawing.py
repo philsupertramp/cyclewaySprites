@@ -123,10 +123,17 @@ class Way:
     total: int
 
     recognized_tags = {"highway":           {"road"},
-                       "cycleway:both":     {"no"},
-                       "sidewalk:both":     {"no"},
+                       "cycleway:both":     {"no", "separate"},
+                       "cycleway:left":     {"no", "separate"},
+                       "cycleway:right":    {"no", "separate"},
+                       "bicycle:both":      {"use_sidepath", "optional_sidepath"},
+                       "bicycle:left":      {"use_sidepath", "optional_sidepath"},
+                       "bicycle:right":     {"use_sidepath", "optional_sidepath"},
+                       "sidewalk:both":     {"no", "separate"},
+                       "sidewalk:left":     {"no", "separate"},
+                       "sidewalk:right":    {"no", "separate"},
                        "width:carriageway": {},
-                       "lanes":             {},
+                       "lanes":             {"1", "2", "3", "4"},
                        "divider":           {"dashed_line", "solid_line", "no"}}
 
     elems: typing.List[Way_Element]
@@ -135,13 +142,18 @@ class Way:
         filtered_tags = {}
         for tag, value in self.tags.items():
             if tag not in self.recognized_tags:
-                print('unrecognized tag "'+tag+'"="'+value+'"', "found!")
+                print('    unrecognized tag "'+tag+'"="'+value+'"', "found!")
             elif value not in self.recognized_tags[tag]:
-                print('unrecognized value found for tag "'+tag+'"="'+value+'"')
+                print('    unrecognized value found for tag "'+tag+'"="'+value+'"')
             else:
                 # print('"' + tag + '"="' + value + '"', "found!")
                 filtered_tags[tag] = value
         return filtered_tags
+
+    def make_gruenstreifen_elem(self: 'Way') -> Way_Element:
+        return Way_Element(draw_settings["gruenstreifen"]["breite"]["max"],
+                           draw_settings["draw_height_meter"],
+                           draw_settings["gruenstreifen"]["colour"])
 
     def create_elements_highway_road(self: 'Way') -> None:
         tags = self.filter_tags()
@@ -164,6 +176,8 @@ class Way:
         seitenlinie        = Way_Element(draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["seitenlinie"]["breite"] ],
                                             draw_settings["draw_height_meter"],
                                             draw_settings["strasse"]["linie"]["colour"])
+
+        # if wanted, create leitlinie
         if tags["divider"] != "no":
             leitlinie          = Way_Element(draw_settings["strasse"]["linie"][ draw_settings["strasse"]["linie"]["leitlinie"]["breite"] ],
                                                 draw_settings["strasse"]["linie"]["leitlinie"]["laenge"],
@@ -184,7 +198,7 @@ class Way:
                                          draw_settings["strasse"]["bordstein"]["colour"])
         bordstein.set_distance(draw_settings["strasse"]["bordstein"]["abstand"],
                                draw_settings["strasse"]["bordstein"]["background_colour"])
-        gruenstreifen      = Way_Element(draw_settings["gruenstreifen"]["breite"]["max"], draw_settings["draw_height_meter"], "green")
+        gruenstreifen = self.make_gruenstreifen_elem()
 
         # add gruenstreifen if first way
         if self.count == 0:
@@ -215,19 +229,18 @@ class Way:
         self.count = count
         self.total = total
 
-        print('generating elements for way "' + self.name + '" which has', len(self.tags), "tags")
+        #print('generating elements for way "' + self.name + '" which has', len(self.tags), "tags")
         if "highway" in self.tags:
             if self.tags["highway"] in self.recognized_tags["highway"]:
                 if self.tags["highway"] == "road":
                     self.create_elements_highway_road()
 
             else: # unknown highway value
-                print('unrecognized tag "highway"=' + '"' + self.tags["highway"] + '"', "found!")
-                pprint(self.tags, indent=5, compact=False, sort_dicts=False, width=1)
+                print('    unrecognized tag "highway"=' + '"' + self.tags["highway"] + '"', "found!")
+                #pprint(self.tags, indent=5, compact=False, sort_dicts=False, width=1)
         else: # no highway tag
             print("no highway tag found!")
             pprint(self.tags, indent=9, compact=False, sort_dicts=False, width=1)
-        print()
 
     def get_elements(self: 'Way') -> typing.Generator[Way_Element, None, None]:
         for elem in self.elems:

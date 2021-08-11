@@ -80,7 +80,8 @@
         "breite": {
             "max": 1.5,
             "min": 0
-        }
+        },
+        "colour": "green"
     },
     "pixel_pro_meter": 100,
     "schild": {

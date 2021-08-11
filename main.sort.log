@@ -1,0 +1,8 @@
+    unrecognized tag "cycleway:right:lane"="advisory" found!
+    unrecognized tag "cycleway:right:lane:bicycle"="designated" found!
+    unrecognized tag "cycleway:right:lane:bicycle"="yes" found!
+    unrecognized tag "cycleway:right:lane"="exclusive" found!
+    unrecognized tag "highway"="cycleway" found!
+    unrecognized tag "highway"="footway" found!
+    unrecognized tag "highway"="path" found!
+    unrecognized value found for tag "cycleway:right"="lane"
