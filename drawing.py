@@ -122,6 +122,7 @@ class Way:
     count: int
     total: int
 
+    # ignored tags have no renderable equivalent, thus ignore to suppress warnings
     recognized_tags = {"highway":           {"road", "footway", "cycleway", "path"},
                        "cycleway:both":     {"no", "separate"}, # ignore
                        "cycleway:left":     {"no", "separate"}, # ignore
@@ -144,6 +145,8 @@ class Way:
 
     elems: typing.List[Way_Element]
 
+    # filter group of tags to just contain the recognized ones,
+    # warn if non-recognized tags are contained
     def filter_tags(self: 'Way') -> typing.Dict:
         filtered_tags = {}
         for tag, value in self.tags.items():

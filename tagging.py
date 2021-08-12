@@ -4,10 +4,8 @@ import typing
 from scoping import scoping
 import json
 
-
 if __name__ == "__main__":
     pass
-
 
 def get_tags() -> typing.Dict:
     # read settings data from json
@@ -16,8 +14,6 @@ def get_tags() -> typing.Dict:
         tag_data = json.load(json_file)
         #print(json.dumps(tag_data, sort_keys = True, indent = 4))
     return tag_data
-
-
 
 def get_example_tags() -> typing.Dict:
     data = {"tags": list()}
