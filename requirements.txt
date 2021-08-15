@@ -1,0 +1,2 @@
+scoping==0.1.2
+svgwrite==1.4.1
