@@ -1,0 +1,171 @@
+./settings.py:12:1: E302 expected 2 blank lines, found 1
+./settings.py:17:9: E265 block comment should start with '# '
+./settings.py:20:1: E302 expected 2 blank lines, found 1
+./settings.py:28:80: E501 line too long (82 > 79 characters)
+./settings.py:39:19: W291 trailing whitespace
+./settings.py:40:1: E302 expected 2 blank lines, found 1
+./settings.py:52:9: F841 local variable 'spurbreite' is assigned to but never used
+./settings.py:62:13: F841 local variable 'breitstrich' is assigned to but never used
+./settings.py:63:13: F841 local variable 'schmalstrich' is assigned to but never used
+./settings.py:69:59: E261 at least two spaces before inline comment
+./settings.py:69:80: E501 line too long (84 > 79 characters)
+./settings.py:72:62: E261 at least two spaces before inline comment
+./settings.py:74:63: E261 at least two spaces before inline comment
+./settings.py:79:5: E303 too many blank lines (2)
+./settings.py:90:80: E501 line too long (116 > 79 characters)
+./settings.py:106:13: E303 too many blank lines (2)
+./settings.py:144:60: E261 at least two spaces before inline comment
+./settings.py:147:29: E222 multiple spaces after operator
+./settings.py:148:29: E222 multiple spaces after operator
+./settings.py:150:62: E261 at least two spaces before inline comment
+./settings.py:152:21: F841 local variable 'abstand' is assigned to but never used
+./settings.py:152:62: E261 at least two spaces before inline comment
+./settings.py:153:21: F841 local variable 'laenge' is assigned to but never used
+./settings.py:153:29: E222 multiple spaces after operator
+./settings.py:154:29: E222 multiple spaces after operator
+./settings.py:163:5: F841 local variable 'pixel_pro_meter' is assigned to but never used
+./settings.py:164:5: F841 local variable 'draw_height_meter' is assigned to but never used
+./settings.py:170:9: F841 local variable 'groessenfaktor' is assigned to but never used
+./settings.py:172:9: F841 local variable 'rund' is assigned to but never used
+./settings.py:174:53: E261 at least two spaces before inline comment
+./settings.py:181:53: E261 at least two spaces before inline comment
+./settings.py:181:80: E501 line too long (105 > 79 characters)
+./settings.py:183:17: F841 local variable 'gross' is assigned to but never used
+./settings.py:184:17: F841 local variable 'klein' is assigned to but never used
+./settings.py:191:42: E261 at least two spaces before inline comment
+./settings.py:192:1: W391 blank line at end of file
+./tagging.py:4:1: F401 'scoping.scoping' imported but unused
+./tagging.py:12:1: E302 expected 2 blank lines, found 1
+./tagging.py:17:9: E265 block comment should start with '# '
+./tagging.py:24:1: E302 expected 2 blank lines, found 1
+./drawing.py:4:80: E501 line too long (82 > 79 characters)
+./drawing.py:16:80: E501 line too long (82 > 79 characters)
+./drawing.py:20:1: E302 expected 2 blank lines, found 1
+./drawing.py:26:80: E501 line too long (95 > 79 characters)
+./drawing.py:27:80: E501 line too long (83 > 79 characters)
+./drawing.py:31:80: E501 line too long (82 > 79 characters)
+./drawing.py:32:80: E501 line too long (86 > 79 characters)
+./drawing.py:33:80: E501 line too long (98 > 79 characters)
+./drawing.py:38:80: E501 line too long (95 > 79 characters)
+./drawing.py:57:48: E251 unexpected spaces around keyword / parameter equals
+./drawing.py:57:50: E251 unexpected spaces around keyword / parameter equals
+./drawing.py:58:45: E251 unexpected spaces around keyword / parameter equals
+./drawing.py:58:47: E251 unexpected spaces around keyword / parameter equals
+./drawing.py:59:80: E501 line too long (126 > 79 characters)
+./drawing.py:67:80: E501 line too long (94 > 79 characters)
+./drawing.py:73:76: E231 missing whitespace after ','
+./drawing.py:73:80: E501 line too long (127 > 79 characters)
+./drawing.py:75:80: E501 line too long (107 > 79 characters)
+./drawing.py:76:80: E501 line too long (142 > 79 characters)
+./drawing.py:76:80: E231 missing whitespace after ','
+./drawing.py:78:80: E501 line too long (129 > 79 characters)
+./drawing.py:78:80: E231 missing whitespace after ','
+./drawing.py:80:22: E261 at least two spaces before inline comment
+./drawing.py:81:69: E231 missing whitespace after ','
+./drawing.py:81:80: E501 line too long (118 > 79 characters)
+./drawing.py:88:80: E501 line too long (100 > 79 characters)
+./drawing.py:89:80: E501 line too long (82 > 79 characters)
+./drawing.py:90:46: E231 missing whitespace after ','
+./drawing.py:90:49: E231 missing whitespace after ','
+./drawing.py:90:53: E231 missing whitespace after ','
+./drawing.py:96:1: E302 expected 2 blank lines, found 1
+./drawing.py:103:60: E251 unexpected spaces around keyword / parameter equals
+./drawing.py:103:62: E251 unexpected spaces around keyword / parameter equals
+./drawing.py:110:26: E203 whitespace before ':'
+./drawing.py:110:80: E501 line too long (85 > 79 characters)
+./drawing.py:119:80: E501 line too long (96 > 79 characters)
+./drawing.py:131:1: E302 expected 2 blank lines, found 1
+./drawing.py:138:80: E501 line too long (82 > 79 characters)
+./drawing.py:139:80: E501 line too long (84 > 79 characters)
+./drawing.py:140:64: E261 at least two spaces before inline comment
+./drawing.py:141:64: E261 at least two spaces before inline comment
+./drawing.py:142:64: E261 at least two spaces before inline comment
+./drawing.py:143:80: E501 line too long (91 > 79 characters)
+./drawing.py:143:83: E261 at least two spaces before inline comment
+./drawing.py:144:80: E501 line too long (91 > 79 characters)
+./drawing.py:144:83: E261 at least two spaces before inline comment
+./drawing.py:145:80: E501 line too long (91 > 79 characters)
+./drawing.py:145:83: E261 at least two spaces before inline comment
+./drawing.py:149:58: E261 at least two spaces before inline comment
+./drawing.py:152:64: E261 at least two spaces before inline comment
+./drawing.py:153:64: E261 at least two spaces before inline comment
+./drawing.py:154:64: E261 at least two spaces before inline comment
+./drawing.py:157:80: E501 line too long (80 > 79 characters)
+./drawing.py:169:80: E501 line too long (83 > 79 characters)
+./drawing.py:187:65: E201 whitespace after '['
+./drawing.py:187:80: E501 line too long (133 > 79 characters)
+./drawing.py:187:124: E202 whitespace before ']'
+./drawing.py:190:70: E201 whitespace after '['
+./drawing.py:190:80: E501 line too long (128 > 79 characters)
+./drawing.py:190:127: E202 whitespace before ']'
+./drawing.py:195:27: E221 multiple spaces before operator
+./drawing.py:195:77: E201 whitespace after '['
+./drawing.py:195:80: E501 line too long (140 > 79 characters)
+./drawing.py:195:136: E202 whitespace before ']'
+./drawing.py:196:45: E127 continuation line over-indented for visual indent
+./drawing.py:197:45: E127 continuation line over-indented for visual indent
+./drawing.py:198:20: E221 multiple spaces before operator
+./drawing.py:198:76: E201 whitespace after '['
+./drawing.py:198:80: E501 line too long (137 > 79 characters)
+./drawing.py:198:135: E202 whitespace before ']'
+./drawing.py:199:45: E127 continuation line over-indented for visual indent
+./drawing.py:200:45: E127 continuation line over-indented for visual indent
+./drawing.py:200:80: E501 line too long (88 > 79 characters)
+./drawing.py:204:22: E221 multiple spaces before operator
+./drawing.py:204:80: E501 line too long (139 > 79 characters)
+./drawing.py:204:80: E201 whitespace after '['
+./drawing.py:204:137: E202 whitespace before ']'
+./drawing.py:205:49: E127 continuation line over-indented for visual indent
+./drawing.py:205:80: E501 line too long (105 > 79 characters)
+./drawing.py:206:49: E127 continuation line over-indented for visual indent
+./drawing.py:206:80: E501 line too long (92 > 79 characters)
+./drawing.py:208:80: E501 line too long (97 > 79 characters)
+./drawing.py:209:41: E127 continuation line over-indented for visual indent
+./drawing.py:210:80: E501 line too long (92 > 79 characters)
+./drawing.py:215:21: E221 multiple spaces before operator
+./drawing.py:215:80: E501 line too long (80 > 79 characters)
+./drawing.py:218:18: E221 multiple spaces before operator
+./drawing.py:218:80: E501 line too long (89 > 79 characters)
+./drawing.py:219:80: E501 line too long (89 > 79 characters)
+./drawing.py:220:80: E501 line too long (89 > 79 characters)
+./drawing.py:221:80: E501 line too long (80 > 79 characters)
+./drawing.py:222:80: E501 line too long (90 > 79 characters)
+./drawing.py:235:53: E225 missing whitespace around operator
+./drawing.py:248:9: F841 local variable 'tags' is assigned to but never used
+./drawing.py:270:9: F841 local variable 'tags' is assigned to but never used
+./drawing.py:272:80: E501 line too long (112 > 79 characters)
+./drawing.py:291:9: F841 local variable 'tags' is assigned to but never used
+./drawing.py:295:46: E261 at least two spaces before inline comment
+./drawing.py:314:18: E221 multiple spaces before operator
+./drawing.py:319:9: E265 block comment should start with '# '
+./drawing.py:319:80: E501 line too long (99 > 79 characters)
+./drawing.py:320:16: W291 trailing whitespace
+./drawing.py:322:15: E271 multiple spaces after keyword
+./drawing.py:330:18: E261 at least two spaces before inline comment
+./drawing.py:331:80: E501 line too long (101 > 79 characters)
+./drawing.py:332:17: E265 block comment should start with '# '
+./drawing.py:332:80: E501 line too long (86 > 79 characters)
+./drawing.py:333:14: E261 at least two spaces before inline comment
+./drawing.py:335:80: E501 line too long (81 > 79 characters)
+./drawing.py:341:52: E251 unexpected spaces around keyword / parameter equals
+./drawing.py:341:54: E251 unexpected spaces around keyword / parameter equals
+./drawing.py:343:1: W391 blank line at end of file
+./main.py:4:80: E501 line too long (108 > 79 characters)
+./main.py:5:80: E501 line too long (107 > 79 characters)
+./main.py:6:80: E501 line too long (96 > 79 characters)
+./main.py:6:97: W291 trailing whitespace
+./main.py:7:80: E501 line too long (111 > 79 characters)
+./main.py:8:80: E501 line too long (102 > 79 characters)
+./main.py:11:42: E231 missing whitespace after ','
+./main.py:11:80: E501 line too long (80 > 79 characters)
+./main.py:18:1: E302 expected 2 blank lines, found 1
+./main.py:19:80: E501 line too long (106 > 79 characters)
+./main.py:34:42: E251 unexpected spaces around keyword / parameter equals
+./main.py:34:44: E251 unexpected spaces around keyword / parameter equals
+./main.py:34:57: E251 unexpected spaces around keyword / parameter equals
+./main.py:34:59: E251 unexpected spaces around keyword / parameter equals
+./main.py:41:5: E303 too many blank lines (2)
+./main.py:42:14: E203 whitespace before ':'
+./main.py:43:15: E203 whitespace before ':'
+./main.py:59:1: E305 expected 2 blank lines after class or function definition, found 1
+./main.py:61:1: W391 blank line at end of file

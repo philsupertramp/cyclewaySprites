@@ -317,6 +317,7 @@ class Way:
         self.total = total
 
         #print('generating elements for way "' + self.name + '" which has', len(self.tags), "tags")
+        # TODO: 
         if "highway" in self.tags:
             if   self.tags["highway"] == "road":
                 self.create_elements_highway_road()
@@ -339,3 +340,4 @@ class Way:
 
     def add_rect(self: 'Way', width, height, colour = "grey"):
         self.elems.insert(Way_Element(width, height, colour))
+
