@@ -23,7 +23,19 @@ class DrawSettings:
             DrawSettings.settings_data = json.load(json_file)
             #print(json.dumps(settings_data, sort_keys = True, indent = 4))
 
+        DrawSettings.check_values(DrawSettings.settings_data)
         DrawSettings.is_initialized = True
+
+    @staticmethod
+    def check_values(dictionary, prev = ""):
+        for key, value in dictionary.items():
+            if type(value) is dict:
+                if prev == "":
+                    DrawSettings.check_values(value, key)
+                else:
+                    DrawSettings.check_values(value, prev + ":" + key)
+            if value == "?":
+                print("warning: unknown value in DrawSettings:", prev + ":" + key, "=", value)
 
     @staticmethod
     def __getitem__(item):

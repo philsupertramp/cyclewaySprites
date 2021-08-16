@@ -30,7 +30,8 @@ def main():
     tags_dict : typing.Dict = get_tags()
     tags_group : typing.List = tags_dict["tags"]
 
-    html = "<table border=1 frame=void>\n"
+    html = "<table><td style=\"    vertical-align: top;\">"
+    html += "<table border=1 frame=void>\n"
     html += """    <tr>
         <th>svg</th>
         <th>Way A</th>
@@ -54,6 +55,15 @@ def main():
 
         html += d_file.get_html()
     html += "</table>\n"
+
+    html += "<td></td>"
+
+    html += "<td style=\"vertical-align: top;\">"
+    with open("tagging.html") as infile:
+        html += infile.read()
+    html += "</td>"
+
+    html += "</td></table>\n"
 
     with open("tagging_generated.html", "w") as outfile:
         outfile.write(html)

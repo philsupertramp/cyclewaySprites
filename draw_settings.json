@@ -24,10 +24,23 @@
                     "min": 1.6,
                     "opt": "?"
                 },
+                "colour": "#2f66b2",
                 "links": {
                     "breite": {
                         "min": "?",
                         "opt": "?"
+                    }
+                },
+                "seitenlinie": {
+                    "links": {
+                        "abstand": 0,
+                        "breite": "breitstrich",
+                        "laenge": 100
+                    },
+                    "rechts": {
+                        "abstand": 0,
+                        "breite": "schmalstrich",
+                        "laenge": 100
                     }
                 }
             }
@@ -63,14 +76,14 @@
                     "laenge": 1
                 },
                 "rechts": {
-                    "abstand": 0,
+                    "abstand": 1,
                     "breite": "schmalstrich",
                     "laenge": 1
                 }
             }
         }
     },
-    "draw_height_meter": 12.5,
+    "draw_height_meter": 12,
     "gehweg": {
         "breite": {
             "min": 2.5,
@@ -121,9 +134,16 @@
             "seitenlinie": {
                 "abstand": 0,
                 "breite": "schmalstrich",
-                "laenge": 1
+                "laenge": 100
             }
         },
         "spurbreite": 3
+    },
+    "weg": {
+        "breite": {
+            "min": 2.5,
+            "old": 1.5
+        },
+        "colour": "#745d4c"
     }
 }

@@ -15,7 +15,8 @@
             },
             "Way 2": {
                 "highway": "footway",
-                "footway": "sidewalk"
+                "footway": "sidewalk",
+                "separation:left": "grass_verge"
             }
         },
         {
@@ -33,7 +34,9 @@
                 "foot": "designated",
                 "bicycle": "yes",
                 "maxspeed:bicycle": "walk",
-                "traffic_sign": "DE:239;1022-10"
+                "traffic_sign": "DE:239;1022-10",
+                "segregated": "no",
+                "separation:left": "grass_verge"
             }
         },
         {
@@ -44,7 +47,8 @@
                 "cycleway:right:lane": "advisory",
                 "cycleway:right:lane:bicycle": "yes",
                 "sidewalk:left": "no",
-                "sidewalk:right": "separate"
+                "sidewalk:right": "separate",
+                "separation:right": "grass_verge"
             },
             "Way 2": {
                 "highway": "footway",
@@ -60,7 +64,8 @@
                 "cycleway:right:lane": "advisory",
                 "cycleway:right:lane:bicycle": "yes",
                 "sidewalk:left": "no",
-                "sidewalk:right": "separate"
+                "sidewalk:right": "separate",
+                "separation:right": "grass_verge"
             },
             "Way 2": {
                 "highway": "footway",
@@ -77,7 +82,8 @@
                 "cycleway:right:lane:bicycle": "designated",
                 "cycleway:right:traffic_sign": "DE:237",
                 "sidewalk:left": "no",
-                "sidewalk:right": "separate"
+                "sidewalk:right": "separate",
+                "separation:right": "grass_verge"
             },
             "Way 2": {
                 "highway": "footway",
@@ -99,7 +105,8 @@
                 "foot": "designated",
                 "bicycle": "designated",
                 "segregated": "no",
-                "traffic_sign": "DE:240"
+                "traffic_sign": "DE:240",
+                "separation:left": "grass_verge"
             }
         },
         {
@@ -117,7 +124,8 @@
                 "bicycle:oneway": "yes",
                 "foot": "designated",
                 "footway": "sidewalk",
-                "segregated": "yes"
+                "segregated": "yes",
+                "separation:left": "grass_verge"
             }
         },
         {
@@ -136,7 +144,8 @@
                 "foot": "designated",
                 "footway": "sidewalk",
                 "segregated": "yes",
-                "traffic_sign": "DE:241-30"
+                "traffic_sign": "DE:241-30",
+                "separation:left": "grass_verge"
             }
         },
         {
@@ -151,7 +160,8 @@
             "Way 2": {
                 "highway": "cycleway",
                 "bicycle": "yes",
-                "bicycle:oneway": "yes"
+                "bicycle:oneway": "yes",
+                "separation:right": "grass_verge"
             },
             "Way 3": {
                 "highway": "footway",
@@ -171,7 +181,8 @@
                 "highway": "cycleway",
                 "bicycle": "designated",
                 "bicycle:oneway": "yes",
-                "traffic_sign": "DE:237"
+                "traffic_sign": "DE:237",
+                "separation:right": "grass_verge"
             },
             "Way 3": {
                 "highway": "footway",
@@ -191,7 +202,8 @@
                 "highway": "cycleway",
                 "bicycle": "designated",
                 "bicycle:oneway": "no",
-                "traffic_sign": "DE:237;1000-31"
+                "traffic_sign": "DE:237;1000-31",
+                "separation:right": "grass_verge"
             },
             "Way 3": {
                 "highway": "footway",
@@ -214,7 +226,8 @@
                 "bicycle:oneway": "no",
                 "segregated": "yes",
                 "footway": "sidewalk",
-                "traffic_sign": "DE:241;1000-31"
+                "traffic_sign": "DE:241;1000-31",
+                "separation:left": "grass_verge"
             }
         },
         {
@@ -229,7 +242,9 @@
             "Way 2": {
                 "highway": "cycleway",
                 "bicycle": "yes",
-                "bicycle:oneway": "yes"
+                "bicycle:oneway": "yes",
+                "separation:left": "grass_verge",
+                "separation:right": "grass_verge"
             },
             "Way 3": {
                 "highway": "footway",
@@ -249,7 +264,9 @@
                 "highway": "cycleway",
                 "bicycle": "designated",
                 "bicycle:oneway": "yes",
-                "traffic_sign": "DE:237"
+                "traffic_sign": "DE:237",
+                "separation:left": "grass_verge",
+                "separation:right": "grass_verge"
             },
             "Way 3": {
                 "highway": "footway",
@@ -269,7 +286,9 @@
                 "highway": "cycleway",
                 "bicycle": "designated",
                 "bicycle:oneway": "no",
-                "traffic_sign": "DE:237;1000-31"
+                "traffic_sign": "DE:237;1000-31",
+                "separation:left": "grass_verge",
+                "separation:right": "grass_verge"
             },
             "Way 3": {
                 "highway": "footway",
