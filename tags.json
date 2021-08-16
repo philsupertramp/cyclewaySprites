@@ -76,6 +76,7 @@
                 "cycleway:right": "lane",
                 "cycleway:right:lane": "exclusive",
                 "cycleway:right:lane:bicycle": "designated",
+                "cycleway:right:traffic_sign": "DE:237",
                 "sidewalk:left": "no",
                 "sidewalk:right": "separate"
             },
