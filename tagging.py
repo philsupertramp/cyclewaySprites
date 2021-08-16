@@ -296,6 +296,6 @@ def get_example_tags() -> typing.Dict:
         }
     })
 
-    print(data)
+    #print(data)
 
     return data

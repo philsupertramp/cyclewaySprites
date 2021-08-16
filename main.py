@@ -18,16 +18,24 @@ def main():
 
     # generate example tags, print pretty
     tags_dict = get_example_tags()
-    print(json.dumps(tags_dict, sort_keys = True, indent = 4))
+    #print(json.dumps(tags_dict, sort_keys = True, indent = 4))
 
     # save example tags to file
-    with open("tags.json", "w") as outfile:
-        json.dump(tags_dict, outfile, sort_keys=False, indent=4)
+    # with open("tags.json", "w") as outfile:
+    #     json.dump(tags_dict, outfile, sort_keys=False, indent=4)
 
 
     # get tags to process from file
     tags_dict : typing.Dict = get_tags()
     tags_group : typing.List = tags_dict["tags"]
+
+    html = "<table border=1 frame=void>\n"
+    html += """    <tr>
+        <th>svg</th>
+        <th>Way A</th>
+        <th>Way B</th>
+        <th>Way C</th>
+    </tr>"""
 
     # draw each group of tags separately
     group: typing.Dict
@@ -42,6 +50,14 @@ def main():
 
         # save processed tags to a file (with default, indexed name)
         d_file.save()
+
+        html += d_file.get_HTML()
+    html += "</table>\n"
+
+    with open("tagging_generated.html", "w") as outfile:
+        outfile.write(html)
+
+
 
 if __name__ == "__main__":
     main()

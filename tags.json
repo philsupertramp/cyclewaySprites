@@ -259,7 +259,7 @@
         {
             "Way 1": {
                 "highway": "road",
-                "cycleway:right": "separate",
+                "cycleway:both": "separate",
                 "bicycle:both": "use_sidepath",
                 "sidewalk:right": "separate",
                 "cycleway:left": "no",
