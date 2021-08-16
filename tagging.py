@@ -4,9 +4,11 @@ import typing
 from scoping import scoping
 import json
 
+# TODO: drop me
 if __name__ == "__main__":
     pass
 
+# TODO: unify duplicate with `settings.get_draw_settings`
 def get_tags() -> typing.Dict:
     # read settings data from json
     tag_data = None
@@ -15,6 +17,10 @@ def get_tags() -> typing.Dict:
         #print(json.dumps(tag_data, sort_keys = True, indent = 4))
     return tag_data
 
+# TODO: ok, sorry but WTF :) this looks like json,
+# you handle it like json but you do all the extra
+# work of not using a json file, why? this screams
+# for example_tags.json, right?
 def get_example_tags() -> typing.Dict:
     data = {"tags": list()}
     tags = data["tags"]

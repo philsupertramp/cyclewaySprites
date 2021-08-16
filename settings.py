@@ -4,9 +4,11 @@ import typing
 from scoping import scoping
 import json
 
+# TODO: drop me
 if __name__ == "__main__":
     pass
 
+# TODO: unify duplicate with `tagging.get_tags`
 def get_draw_settings() -> typing.Dict:
     # read settings data from json
     settings_data = None
@@ -19,6 +21,22 @@ def write_draw_settings(settings_data: typing.Dict) -> None:
     with open("draw_settings.json", "w") as outfile:
         json.dump(settings_data, outfile, sort_keys=True, indent=4)
 
+# TODO: this seems legit, you set default values for your settings
+# maybe simplify it in some way, extract scopes into submethods
+# there are many ways to do that, and there might be even an easier
+# solution to what you're doing.
+# Let's imagine for example you have two dicts, `default` with your default values
+# and `values` for your input data, something like:
+# >>> default={'A': 1, 'B': 2}
+# >>> values={'A': 5}
+# >>> settings=default.copy()
+# >>> settings.update(values)
+# >>> settings
+# {'A': 5, 'B': 2}
+# or
+# >>> settings={**default, **values}
+# >>> settings
+# {'A': 5, 'B': 2} 
 def set_default_settings(settings_data: typing.Dict) -> None:
     # set non-existent data in json
 

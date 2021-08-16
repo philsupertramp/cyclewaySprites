@@ -1,11 +1,22 @@
 #!/usr/bin/env python3
+"""
+General comments:
+    - there's PEP8, and there's a reason for it. tools like pylint and flake8 help enforcing those standards
+    - you tend to repeat yourself, try extracting functionality to reduce the code and simplify maintenance
+    - some places make it verry hart schnell zu verstehen what's going on weil manche things are 
+    called german names, some sind englisch. Either try using only one language, or assign constants to foreign
+    values, like "gehweg" could be stored in a constant called pavement or whatever, you get the gist.
+
+"""
 from settings import set_default_settings,get_draw_settings, write_draw_settings
 from tagging import get_tags, get_example_tags
+# TODO: declutter module imports, import what you need.
 import drawing
 import json
 import typing
 
 def main():
+    # TODO: those are static values, we could just load a file once instead of hardcoding this whole setup
     # read draw settings,
     draw_settings = get_draw_settings()
 
@@ -18,6 +29,8 @@ def main():
 
     # generate example tags, print pretty
     tags_dict = get_example_tags()
+    # TODO: drop one of multiple prints. inside get_example_tags or here
+    # alternatively: pprint(tags_dict, indent=4)
     print(json.dumps(tags_dict, sort_keys = True, indent = 4))
 
     # save example tags to file

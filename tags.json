@@ -1,5 +1,6 @@
 {
-    "tags": [{
+    "tags": [
+        {
             "Way 1": {
                 "highway": "road",
                 "cycleway:both": "no",

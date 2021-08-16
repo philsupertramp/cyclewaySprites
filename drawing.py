@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# TODO: this file made my screen go dark red ^^ my IDE enforces PEP8
+# due to it's size and complexity this might be an indicator to split into
+# subfiles, but if you prefer scrolling over spread I can totally understand that.
 
 import typing
 from pprint import pprint
@@ -6,9 +9,12 @@ import svgwrite
 from settings import get_draw_settings
 from math import floor
 
+# TODO: drop me
 if __name__ == "__main__":
     pass
 
+# TODO: this might be better placed in `settings` so we get the global object from
+# the source
 draw_settings = get_draw_settings()
 
 class Drawing:
@@ -17,10 +23,15 @@ class Drawing:
     file_name: str
     file_name_counter = 0
 
+    # TODO: change file_name to Optional[str] with default None, but that's probably just sugar
     def __init__(self: 'Drawing', file_name: str = "svg/default.svg") -> 'Drawing':
         if file_name == "svg/default.svg":
             file_name = "svg/default" + str(Drawing.file_name_counter) + ".svg"
             Drawing.file_name_counter += 1
+        # TODO: it's adviced to initialize class attributes in the __init__ method
+        # python doesn't enforce and even a user can change the structor of any object
+        # but initializing attributes (even empty) tells the user that the attribute isn't present
+        # during initialization
         self.ways = []
         self.file_name = file_name
 
@@ -53,6 +64,7 @@ class Drawing:
             elem: Way_Element
             for elem in way.get_elements():
                 # print(elem)
+                # TODO: why declaring it private if we want to use it outside of "Way_Element"
                 if elem._distance is not None:
                     # draw dashed
 
@@ -80,6 +92,7 @@ class Drawing:
     def save(self: 'Drawing') -> None:
         self.svg_obj.save()
 
+# TODO: CamelCase me
 class Way_Element:
     _width: float
     _height: float
@@ -295,6 +308,7 @@ class Way:
         if not self.count + 1 < self.total:
             self.elems.append(gruenstreifen)
 
+    # TODO: move me to the top of the class declaration, I'm important.
     def __init__(self: 'Way', name, tags, count: int, total: int) -> 'Way':
         self.elems = []
         self.name  = name
@@ -303,6 +317,7 @@ class Way:
         self.total = total
 
         #print('generating elements for way "' + self.name + '" which has', len(self.tags), "tags")
+        # TODO: 
         if "highway" in self.tags:
             if   self.tags["highway"] == "road":
                 self.create_elements_highway_road()
@@ -325,3 +340,4 @@ class Way:
 
     def add_rect(self: 'Way', width, height, colour = "grey"):
         self.elems.insert(Way_Element(width, height, colour))
+
