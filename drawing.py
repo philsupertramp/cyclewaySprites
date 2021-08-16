@@ -6,15 +6,16 @@ from pprint import pprint
 from math import floor
 import svgwrite
 from settings import DrawSettings
-
 class Drawing:
     """ temporarily stores data to draw and can output it to svg and an html table referenceing the svg file """
     ways: typing.List
     svg_obj: svgwrite.Drawing
     file_name: str
+
+    # static class member
     file_name_counter = 0
 
-    def __init__(self: 'Drawing', file_name: str = "svg/default.svg") -> 'Drawing':
+    def __init__(self: 'Drawing', file_name: typing.Optional[str] = "svg/default.svg") -> 'Drawing':
         if file_name == "svg/default.svg":
             file_name = "svg/default" + str(Drawing.file_name_counter) + ".svg"
             Drawing.file_name_counter += 1
@@ -36,7 +37,7 @@ class Drawing:
 
         way: Way
         for way in self.ways:
-            elem: Way_Element
+            elem: WayElement
             for elem in way.get_elements():
                 width += elem.width()
 
@@ -48,7 +49,7 @@ class Drawing:
         way: Way
         x_offset = 0
         for way in self.ways:
-            elem: Way_Element
+            elem: WayElement
             for elem in way.get_elements():
                 # print(elem)
                 if elem.get_distance() is not None:
@@ -139,38 +140,38 @@ class Drawing:
         res += """    </tr>"""
         return res
 
-class Way_Element:
+class WayElement:
     _width: float
     _height: float
     _distance: float
     colour: str
     background_colour: str
 
-    def __init__(self: 'Way_Element', width, height, colour = "grey"):
+    def __init__(self: 'WayElement', width, height, colour = "grey"):
         self._width = width
         self._height = height
         self._distance = None
         self.colour = colour
         self.background_colour = None
 
-    def set_distance(self : 'Way_Element', distance, background_colour: str) -> None:
+    def set_distance(self : 'WayElement', distance, background_colour: str) -> None:
         self._distance = distance
         self.background_colour = background_colour
 
-    def __str__(self: 'Way_Element') -> str:
+    def __str__(self: 'WayElement') -> str:
         return "Way_Element: " + str(self.__dict__)
 
-    def convert_meter_to_pixel(self: 'Way_Element', val):
+    def convert_meter_to_pixel(self: 'WayElement', val):
         # floor to avoid floating point inaccuracies and weird subpixel gaps in the rendered svg
         return floor(val * DrawSettings()["pixel_pro_meter"])
 
-    def width(self: 'Way_Element') -> float:
+    def width(self: 'WayElement') -> float:
         return self.convert_meter_to_pixel(self._width)
 
-    def height(self: 'Way_Element') -> float:
+    def height(self: 'WayElement') -> float:
         return self.convert_meter_to_pixel(self._height)
 
-    def get_distance(self: 'Way_Element') -> float:
+    def get_distance(self: 'WayElement') -> float:
         if self._distance is None:
             return None
         return self.convert_meter_to_pixel(self._distance)
@@ -181,7 +182,7 @@ class Way:
     name: str
     count: int
     total: int
-    elems: typing.List[Way_Element]
+    elems: typing.List[WayElement]
     tags: typing.List
 
     recognized_tags = {"highway":           {"road", "footway", "cycleway", "path"},
@@ -246,8 +247,8 @@ class Way:
                 # print('"' + tag + '"="' + value + '"', "found!")
                 self.filtered_tags[tag] = value
 
-    def make_gruenstreifen_elem(self: 'Way') -> Way_Element:
-        return Way_Element(DrawSettings()["gruenstreifen"]["breite"]["max"],
+    def make_gruenstreifen_elem(self: 'Way') -> WayElement:
+        return WayElement(DrawSettings()["gruenstreifen"]["breite"]["max"],
                            DrawSettings()["draw_height_meter"],
                            DrawSettings()["gruenstreifen"]["colour"])
 
@@ -264,16 +265,16 @@ class Way:
             lane_markings_width += DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["leitlinie"]["breite"] ]
 
         # platz zwischen bordstein und seitenlinie
-        bordstein_line_sep  = Way_Element(DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["seitenlinie"]["breite"] ]*2,
+        bordstein_line_sep  = WayElement(DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["seitenlinie"]["breite"] ]*2,
                                             DrawSettings()["draw_height_meter"],
                                             "gray")
-        seitenlinie        = Way_Element(DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["seitenlinie"]["breite"] ],
+        seitenlinie        = WayElement(DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["seitenlinie"]["breite"] ],
                                             DrawSettings()["draw_height_meter"],
                                             DrawSettings()["strasse"]["linie"]["colour"])
 
         # if wanted, create leitlinie
         if self.filtered_tags["divider"] != "no":
-            leitlinie          = Way_Element(DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["leitlinie"]["breite"] ],
+            leitlinie          = WayElement(DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["leitlinie"]["breite"] ],
                                                 DrawSettings()["strasse"]["linie"]["leitlinie"]["laenge"],
                                                 DrawSettings()["strasse"]["linie"]["colour"])
             if self.filtered_tags["divider"] == "dashed_line":
@@ -284,10 +285,10 @@ class Way:
                 # do not set distance
                 leitlinie._height = DrawSettings()["draw_height_meter"]
 
-        highway_lane       = Way_Element(DrawSettings()["strasse"]["spurbreite"],
+        highway_lane       = WayElement(DrawSettings()["strasse"]["spurbreite"],
                                          DrawSettings()["draw_height_meter"],
                                          DrawSettings()["strasse"]["colour"])
-        bordstein          = Way_Element(DrawSettings()["strasse"]["bordstein"]["breite"],
+        bordstein          = WayElement(DrawSettings()["strasse"]["bordstein"]["breite"],
                                          DrawSettings()["strasse"]["bordstein"]["laenge"],
                                          DrawSettings()["strasse"]["bordstein"]["colour"])
         bordstein.set_distance(DrawSettings()["strasse"]["bordstein"]["abstand"],
@@ -319,7 +320,7 @@ class Way:
     def create_elements_highway_footway(self: 'Way') -> None:
         self.filter_tags()
 
-        highway_footway = Way_Element(DrawSettings()["gehweg"]["breite"]["min"],
+        highway_footway = WayElement(DrawSettings()["gehweg"]["breite"]["min"],
                                       DrawSettings()["draw_height_meter"],
                                       DrawSettings()["gehweg"]["colour"])
         gruenstreifen = self.make_gruenstreifen_elem()
@@ -341,7 +342,7 @@ class Way:
     def create_elements_highway_cycleway(self: 'Way') -> None:
         self.filter_tags()
 
-        highway_cycleway = Way_Element(DrawSettings()["cycleway"]["ausgeschildert"]["hochbord"]["breite"]["opt"],
+        highway_cycleway = WayElement(DrawSettings()["cycleway"]["ausgeschildert"]["hochbord"]["breite"]["opt"],
                                        DrawSettings()["draw_height_meter"],
                                        DrawSettings()["cycleway"]["colour"])
         gruenstreifen = self.make_gruenstreifen_elem()
@@ -362,7 +363,7 @@ class Way:
     def create_elements_highway_path(self: 'Way') -> None:
         self.filter_tags()
 
-        highway_path = Way_Element(DrawSettings()["gehweg"]["breite"]["min"],
+        highway_path = WayElement(DrawSettings()["gehweg"]["breite"]["min"],
                                    DrawSettings()["draw_height_meter"],
                                    "#745d4c") # TODO
         gruenstreifen = self.make_gruenstreifen_elem()
@@ -381,9 +382,9 @@ class Way:
             self.elems.append(gruenstreifen)
 
 
-    def get_elements(self: 'Way') -> typing.Generator[Way_Element, None, None]:
+    def get_elements(self: 'Way') -> typing.Generator[WayElement, None, None]:
         for elem in self.elems:
             yield elem
 
     def add_rect(self: 'Way', width, height, colour = "grey"):
-        self.elems.insert(Way_Element(width, height, colour))
+        self.elems.insert(WayElement(width, height, colour))

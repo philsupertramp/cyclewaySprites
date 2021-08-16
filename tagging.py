@@ -4,9 +4,6 @@ import typing
 from scoping import scoping
 import json
 
-if __name__ == "__main__":
-    pass
-
 def get_tags() -> typing.Dict:
     # read settings data from json
     tag_data = None
