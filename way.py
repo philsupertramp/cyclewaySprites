@@ -1,4 +1,4 @@
-from settings import DrawSettings
+import settings
 import typing
 from way_element import WayElement
 from pprint import pprint
@@ -92,9 +92,9 @@ class Way:
 
 
     def make_grass_verge_elem(self: 'Way') -> WayElement:
-        return WayElement(DrawSettings()["gruenstreifen"]["breite"]["max"],
-                           DrawSettings()["draw_height_meter"],
-                           DrawSettings()["gruenstreifen"]["colour"])
+        return WayElement(settings.Draw()["gruenstreifen"]["breite"]["max"],
+                           settings.Draw()["draw_height_meter"],
+                           settings.Draw()["gruenstreifen"]["colour"])
 
 
     def add_grass_verge_left(self: 'Way') -> None:
@@ -122,40 +122,40 @@ class Way:
         self.filtered_tags.setdefault("divider", "dashed_line")
 
         # seitenlinie, beide seiten, linie, abstand zu bordstein
-        lane_markings_width = DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["seitenlinie"]["breite"] ] * 2 * 2
+        lane_markings_width = settings.Draw()["strasse"]["linie"][ settings.Draw()["strasse"]["linie"]["seitenlinie"]["breite"] ] * 2 * 2
         if self.filtered_tags["divider"] != "no":
             # leitlinie, mittig
-            lane_markings_width += DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["leitlinie"]["breite"] ]
+            lane_markings_width += settings.Draw()["strasse"]["linie"][ settings.Draw()["strasse"]["linie"]["leitlinie"]["breite"] ]
 
         # platz zwischen bordstein und seitenlinie
-        bordstein_line_sep  = WayElement(DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["seitenlinie"]["breite"] ]*2,
-                                        DrawSettings()["draw_height_meter"],
-                                        DrawSettings()["strasse"]["colour"])
-        seitenlinie         = WayElement(DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["seitenlinie"]["breite"] ],
-                                         DrawSettings()["draw_height_meter"],
-                                         DrawSettings()["strasse"]["linie"]["colour"])
+        bordstein_line_sep  = WayElement(settings.Draw()["strasse"]["linie"][ settings.Draw()["strasse"]["linie"]["seitenlinie"]["breite"] ]*2,
+                                        settings.Draw()["draw_height_meter"],
+                                        settings.Draw()["strasse"]["colour"])
+        seitenlinie         = WayElement(settings.Draw()["strasse"]["linie"][ settings.Draw()["strasse"]["linie"]["seitenlinie"]["breite"] ],
+                                         settings.Draw()["draw_height_meter"],
+                                         settings.Draw()["strasse"]["linie"]["colour"])
 
         # if wanted, create leitlinie
         if self.filtered_tags["divider"] != "no":
-            leitlinie          = WayElement(DrawSettings()["strasse"]["linie"][ DrawSettings()["strasse"]["linie"]["leitlinie"]["breite"] ],
-                                            DrawSettings()["strasse"]["linie"]["leitlinie"]["laenge"],
-                                            DrawSettings()["strasse"]["linie"]["colour"])
+            leitlinie          = WayElement(settings.Draw()["strasse"]["linie"][ settings.Draw()["strasse"]["linie"]["leitlinie"]["breite"] ],
+                                            settings.Draw()["strasse"]["linie"]["leitlinie"]["laenge"],
+                                            settings.Draw()["strasse"]["linie"]["colour"])
             if self.filtered_tags["divider"] == "dashed_line":
-                leitlinie.set_distance(DrawSettings()["strasse"]["linie"]["leitlinie"]["abstand"],
-                                       DrawSettings()["strasse"]["colour"])
-                leitlinie._height =    DrawSettings()["strasse"]["linie"]["leitlinie"]["laenge"]
+                leitlinie.set_distance(settings.Draw()["strasse"]["linie"]["leitlinie"]["abstand"],
+                                       settings.Draw()["strasse"]["colour"])
+                leitlinie._height =    settings.Draw()["strasse"]["linie"]["leitlinie"]["laenge"]
             elif self.filtered_tags["divider"] == "solid_line":
                 # do not set distance
-                leitlinie._height = DrawSettings()["draw_height_meter"]
+                leitlinie._height = settings.Draw()["draw_height_meter"]
 
-        highway_lane       = WayElement(DrawSettings()["strasse"]["spurbreite"],
-                                        DrawSettings()["draw_height_meter"],
-                                        DrawSettings()["strasse"]["colour"])
-        bordstein          = WayElement(DrawSettings()["strasse"]["bordstein"]["breite"],
-                                        DrawSettings()["strasse"]["bordstein"]["laenge"],
-                                        DrawSettings()["strasse"]["bordstein"]["colour"])
-        bordstein.set_distance(DrawSettings()["strasse"]["bordstein"]["abstand"],
-                               DrawSettings()["strasse"]["bordstein"]["background_colour"])
+        highway_lane       = WayElement(settings.Draw()["strasse"]["spurbreite"],
+                                        settings.Draw()["draw_height_meter"],
+                                        settings.Draw()["strasse"]["colour"])
+        bordstein          = WayElement(settings.Draw()["strasse"]["bordstein"]["breite"],
+                                        settings.Draw()["strasse"]["bordstein"]["laenge"],
+                                        settings.Draw()["strasse"]["bordstein"]["colour"])
+        bordstein.set_distance(settings.Draw()["strasse"]["bordstein"]["abstand"],
+                               settings.Draw()["strasse"]["bordstein"]["background_colour"])
 
         self.elems.append(bordstein)
         self.elems.append(bordstein_line_sep)
@@ -171,52 +171,52 @@ class Way:
         # cycleway = lane
         if ( "cycleway:right" in self.filtered_tags and self.filtered_tags["cycleway:right"] == "lane"):
             if ( "cycleway:right:lane" in self.filtered_tags and self.filtered_tags["cycleway:right:lane"] == "exclusive"):
-                linie_links = WayElement(DrawSettings()["strasse"]["linie"][ DrawSettings()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["links"]["breite"] ],
-                                         DrawSettings()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["links"]["laenge"],
-                                         DrawSettings()["strasse"]["linie"]["colour"])
-                linie_links.set_distance(DrawSettings()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["links"]["abstand"],
-                                         DrawSettings()["strasse"]["colour"])
+                linie_links = WayElement(settings.Draw()["strasse"]["linie"][ settings.Draw()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["links"]["breite"] ],
+                                         settings.Draw()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["links"]["laenge"],
+                                         settings.Draw()["strasse"]["linie"]["colour"])
+                linie_links.set_distance(settings.Draw()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["links"]["abstand"],
+                                         settings.Draw()["strasse"]["colour"])
                 self.elems.append(linie_links)
 
                 linie_abstand = WayElement(0.05,
-                                           DrawSettings()["draw_height_meter"],
-                                           DrawSettings()["strasse"]["colour"])
+                                           settings.Draw()["draw_height_meter"],
+                                           settings.Draw()["strasse"]["colour"])
 
                 self.elems.append(linie_abstand)
-                self.elems.append(WayElement(DrawSettings()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["breite"]["min"],
-                                             DrawSettings()["draw_height_meter"],
-                                             DrawSettings()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["colour"]))
+                self.elems.append(WayElement(settings.Draw()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["breite"]["min"],
+                                             settings.Draw()["draw_height_meter"],
+                                             settings.Draw()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["colour"]))
                 self.elems.append(linie_abstand)
 
-                linie_rechts = WayElement(DrawSettings()["strasse"]["linie"][ DrawSettings()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["rechts"]["breite"] ],
-                                         DrawSettings()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["rechts"]["laenge"],
-                                         DrawSettings()["strasse"]["linie"]["colour"])
-                linie_rechts.set_distance(DrawSettings()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["rechts"]["abstand"],
-                                         DrawSettings()["strasse"]["colour"])
+                linie_rechts = WayElement(settings.Draw()["strasse"]["linie"][ settings.Draw()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["rechts"]["breite"] ],
+                                         settings.Draw()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["rechts"]["laenge"],
+                                         settings.Draw()["strasse"]["linie"]["colour"])
+                linie_rechts.set_distance(settings.Draw()["cycleway"]["ausgeschildert"]["radfahrstreifen"]["seitenlinie"]["rechts"]["abstand"],
+                                         settings.Draw()["strasse"]["colour"])
                 self.elems.append(linie_rechts)
             elif ("cycleway:right:lane" in self.filtered_tags and self.filtered_tags["cycleway:right:lane"] == "advisory"):
-                linie_links = WayElement(DrawSettings()["strasse"]["linie"][ DrawSettings()["cycleway"]["schutzstreifen"]["seitenlinie"]["links"]["breite"] ],
-                                         DrawSettings()["cycleway"]["schutzstreifen"]["seitenlinie"]["links"]["laenge"],
-                                         DrawSettings()["strasse"]["linie"]["colour"])
-                linie_links.set_distance(DrawSettings()["cycleway"]["schutzstreifen"]["seitenlinie"]["links"]["abstand"],
-                                         DrawSettings()["strasse"]["colour"])
+                linie_links = WayElement(settings.Draw()["strasse"]["linie"][ settings.Draw()["cycleway"]["schutzstreifen"]["seitenlinie"]["links"]["breite"] ],
+                                         settings.Draw()["cycleway"]["schutzstreifen"]["seitenlinie"]["links"]["laenge"],
+                                         settings.Draw()["strasse"]["linie"]["colour"])
+                linie_links.set_distance(settings.Draw()["cycleway"]["schutzstreifen"]["seitenlinie"]["links"]["abstand"],
+                                         settings.Draw()["strasse"]["colour"])
                 self.elems.append(linie_links)
 
                 linie_abstand = WayElement(0.05,
-                                           DrawSettings()["draw_height_meter"],
-                                           DrawSettings()["strasse"]["colour"])
+                                           settings.Draw()["draw_height_meter"],
+                                           settings.Draw()["strasse"]["colour"])
 
                 self.elems.append(linie_abstand)
-                self.elems.append(WayElement(DrawSettings()["cycleway"]["schutzstreifen"]["breite"]["min"],
-                                             DrawSettings()["draw_height_meter"],
-                                             DrawSettings()["strasse"]["colour"]))
+                self.elems.append(WayElement(settings.Draw()["cycleway"]["schutzstreifen"]["breite"]["min"],
+                                             settings.Draw()["draw_height_meter"],
+                                             settings.Draw()["strasse"]["colour"]))
                 self.elems.append(linie_abstand)
 
-                linie_rechts = WayElement(DrawSettings()["strasse"]["linie"][ DrawSettings()["cycleway"]["schutzstreifen"]["seitenlinie"]["rechts"]["breite"] ],
-                                          DrawSettings()["cycleway"]["schutzstreifen"]["seitenlinie"]["rechts"]["laenge"],
-                                          DrawSettings()["strasse"]["linie"]["colour"])
-                linie_rechts.set_distance(DrawSettings()["cycleway"]["schutzstreifen"]["seitenlinie"]["rechts"]["abstand"],
-                                          DrawSettings()["strasse"]["colour"])
+                linie_rechts = WayElement(settings.Draw()["strasse"]["linie"][ settings.Draw()["cycleway"]["schutzstreifen"]["seitenlinie"]["rechts"]["breite"] ],
+                                          settings.Draw()["cycleway"]["schutzstreifen"]["seitenlinie"]["rechts"]["laenge"],
+                                          settings.Draw()["strasse"]["linie"]["colour"])
+                linie_rechts.set_distance(settings.Draw()["cycleway"]["schutzstreifen"]["seitenlinie"]["rechts"]["abstand"],
+                                          settings.Draw()["strasse"]["colour"])
                 self.elems.append(linie_rechts)
             self.elems.append(bordstein_line_sep)
         else:
@@ -227,9 +227,9 @@ class Way:
 
 
     def create_elements_highway_footway(self: 'Way') -> None:
-        highway_footway = WayElement(DrawSettings()["gehweg"]["breite"]["min"],
-                                     DrawSettings()["draw_height_meter"],
-                                     DrawSettings()["gehweg"]["colour"])
+        highway_footway = WayElement(settings.Draw()["gehweg"]["breite"]["min"],
+                                     settings.Draw()["draw_height_meter"],
+                                     settings.Draw()["gehweg"]["colour"])
         grass_verge = self.make_grass_verge_elem()
 
         # TODO traffic_sign="*"
@@ -239,9 +239,9 @@ class Way:
 
 
     def create_elements_highway_cycleway(self: 'Way') -> None:
-        highway_cycleway = WayElement(DrawSettings()["cycleway"]["ausgeschildert"]["hochbord"]["breite"]["opt"],
-                                      DrawSettings()["draw_height_meter"],
-                                      DrawSettings()["cycleway"]["colour"])
+        highway_cycleway = WayElement(settings.Draw()["cycleway"]["ausgeschildert"]["hochbord"]["breite"]["opt"],
+                                      settings.Draw()["draw_height_meter"],
+                                      settings.Draw()["cycleway"]["colour"])
         gruenstreifen = self.make_grass_verge_elem()
 
         # TODO traffic_sign="*"
@@ -252,17 +252,17 @@ class Way:
     def create_elements_highway_path(self: 'Way') -> None:
         self.filtered_tags.setdefault("segregated", "no")
         if self.filtered_tags["segregated"] == "yes":
-            cycleway =   WayElement(DrawSettings()["cycleway"]["hochbord"]["breite"]["min"],
-                                    DrawSettings()["draw_height_meter"],
-                                    DrawSettings()["cycleway"]["colour"])
+            cycleway =   WayElement(settings.Draw()["cycleway"]["hochbord"]["breite"]["min"],
+                                    settings.Draw()["draw_height_meter"],
+                                    settings.Draw()["cycleway"]["colour"])
             self.elems.append(cycleway)
-            highway_path = WayElement(DrawSettings()["weg"]["breite"]["min"],
-                                      DrawSettings()["draw_height_meter"],
-                                      DrawSettings()["weg"]["colour"])
+            highway_path = WayElement(settings.Draw()["weg"]["breite"]["min"],
+                                      settings.Draw()["draw_height_meter"],
+                                      settings.Draw()["weg"]["colour"])
         else:
-            highway_path = WayElement(DrawSettings()["weg"]["breite"]["min"],
-                                      DrawSettings()["draw_height_meter"],
-                                      DrawSettings()["weg"]["colour"])
+            highway_path = WayElement(settings.Draw()["weg"]["breite"]["min"],
+                                      settings.Draw()["draw_height_meter"],
+                                      settings.Draw()["weg"]["colour"])
         self.elems.append(highway_path)
 
         # TODO traffic_sign="*"

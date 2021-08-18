@@ -1,5 +1,5 @@
 from math import floor
-from settings import DrawSettings
+import settings
 
 class WayElement:
     _width: float
@@ -39,7 +39,7 @@ class WayElement:
 
     def convert_meter_to_pixel(self: 'WayElement', val):
         # floor to avoid floating point inaccuracies and weird subpixel gaps in the rendered svg
-        return floor(val * DrawSettings()["pixel_pro_meter"])
+        return floor(val * settings.Draw()["pixel_pro_meter"])
 
     def width(self: 'WayElement') -> float:
         return self.convert_meter_to_pixel(self._width)

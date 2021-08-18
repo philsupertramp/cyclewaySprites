@@ -3,7 +3,7 @@
 """ generate example data, draw data """
 
 import typing
-from settings import DrawSettings
+import settings
 from tagging import get_tags, get_example_tags
 import drawing
 
@@ -12,10 +12,10 @@ def main():
 
     # generate default draw settings,
     # add default draw settings,
-    DrawSettings.set_default_settings()
+    settings.Draw.set_default_settings()
 
     # save draw settings
-    DrawSettings.write_draw_settings()
+    settings.Draw.write_draw_settings()
 
     # generate example tags, print pretty
     tags_dict = get_example_tags()

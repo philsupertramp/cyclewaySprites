@@ -4,7 +4,7 @@
 import typing
 from math import floor
 import svgwrite
-from settings import DrawSettings
+import settings
 from way import Way
 from way_element import WayElement
 
@@ -50,7 +50,7 @@ class Drawing:
         self.svg_obj = svgwrite.Drawing(self.file_name,
                                         profile = 'full',
                                         size = (floor(width),
-                                                floor(DrawSettings()["draw_height_meter"] * DrawSettings()["pixel_pro_meter"])))
+                                                floor(settings.Draw()["draw_height_meter"] * settings.Draw()["pixel_pro_meter"])))
 
         way: Way
         x_offset = 0
@@ -70,7 +70,7 @@ class Drawing:
                     # initially half at top
                     self.svg_obj.add(self.svg_obj.rect((x_offset, y_offset),(elem.width()+overlap, elem.height()/2+overlap), fill=elem.colour))
                     y_offset += elem.height()/2
-                    while y_offset < DrawSettings()["draw_height_meter"] * DrawSettings()["pixel_pro_meter"]:
+                    while y_offset < settings.Draw()["draw_height_meter"] * settings.Draw()["pixel_pro_meter"]:
                         self.svg_obj.add(self.svg_obj.rect((x_offset, y_offset), (elem.width()+overlap, elem.get_distance()+overlap), fill=elem.background_colour))
                         y_offset += elem.get_distance()
                         self.svg_obj.add(self.svg_obj.rect((x_offset, y_offset),(elem.width()+overlap, elem.height()+overlap), fill=elem.colour))

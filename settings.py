@@ -1,68 +1,67 @@
 #!/usr/bin/env python3
 # pylint: disable=missing-module-docstring
 
-from os import stat
 import typing
 import json
 from scoping import scoping
 
-class DrawSettings:
+class Draw:
     """ handles json for settings regarding default values for drawing """
 
     settings_data: typing.Dict
     is_initialized = False
 
     @staticmethod
-    def init() -> 'DrawSettings':
-        if DrawSettings.is_initialized == True:
+    def init() -> 'Draw':
+        if Draw.is_initialized == True:
             return
 
         # read settings data from json
-        DrawSettings.settings_data = None
+        Draw.settings_data = None
         with open("draw_settings.json") as json_file:
-            DrawSettings.settings_data = json.load(json_file)
+            Draw.settings_data = json.load(json_file)
             #print(json.dumps(settings_data, sort_keys = True, indent = 4))
 
-        DrawSettings.check_values(DrawSettings.settings_data)
-        DrawSettings.is_initialized = True
+        Draw.check_values(Draw.settings_data)
+        Draw.is_initialized = True
 
     @staticmethod
     def check_values(dictionary, prev = ""):
         for key, value in dictionary.items():
             if type(value) is dict:
                 if prev == "":
-                    DrawSettings.check_values(value, key)
+                    Draw.check_values(value, key)
                 else:
-                    DrawSettings.check_values(value, prev + ":" + key)
+                    Draw.check_values(value, prev + ":" + key)
             if value == "?":
                 print("warning: unknown value in DrawSettings:", prev + ":" + key, "=", value)
 
     @staticmethod
     def __getitem__(item):
-        DrawSettings.init()
-        return DrawSettings.settings_data[item]
+        Draw.init()
+        return Draw.settings_data[item]
 
     @staticmethod
     def write_draw_settings() -> None:
-        DrawSettings.init()
+        Draw.init()
         with open("draw_settings.json", "w") as outfile:
-            json.dump(DrawSettings.settings_data, outfile, sort_keys=True, indent=4)
-        DrawSettings.is_initialized = False
+            json.dump(Draw.settings_data, outfile, sort_keys=True, indent=4)
+        Draw.is_initialized = False
 
     @staticmethod
     def set_default_settings() -> None:
         # set non-existent data in json
 
-        DrawSettings.init()
+        Draw.init()
 
-        gehweg = DrawSettings.settings_data.setdefault("gehweg", {})
+        gehweg = Draw.settings_data.setdefault("gehweg", {})
         with scoping():
             breite = gehweg.setdefault("breite", {})
             with scoping():
                 breite.setdefault("old", 1.5)
                 breite.setdefault("min", 2.5)
 
-        strasse = DrawSettings.settings_data.setdefault("strasse", {})
+        strasse = Draw.settings_data.setdefault("strasse", {})
         with scoping():
             spurbreite = strasse.setdefault("spurbreite", 3)
 
@@ -91,7 +90,7 @@ class DrawSettings:
                     breite = seitenlinie.setdefault("breite", "schmalstrich")
 
 
-        cycleway = DrawSettings.settings_data.setdefault("cycleway", {})
+        cycleway = Draw.settings_data.setdefault("cycleway", {})
         with scoping():
             ausgeschildert = cycleway.setdefault("ausgeschildert", {})
             with scoping():
@@ -175,10 +174,10 @@ class DrawSettings:
                         breite.setdefault("min", 2.25)
                         breite.setdefault("opt", 3)
 
-        pixel_pro_meter = DrawSettings.settings_data.setdefault("pixel_pro_meter", 160)
-        draw_height_meter = DrawSettings.settings_data.setdefault("draw_height_meter", 10)
+        pixel_pro_meter = Draw.settings_data.setdefault("pixel_pro_meter", 160)
+        draw_height_meter = Draw.settings_data.setdefault("draw_height_meter", 10)
 
-        schild = DrawSettings.settings_data.setdefault("schild", {})
+        schild = Draw.settings_data.setdefault("schild", {})
         with scoping():
             # um die schilder besser erkennen zu koennen im bild, stelle sie
             # nicht massstabsgetreu dar, sondern um diesen faktor vergroessert
@@ -198,7 +197,7 @@ class DrawSettings:
                     gross = breite.setdefault("gross", 0.6)
                     klein = breite.setdefault("klein", 0.42)
 
-        gruenstreifen = DrawSettings.settings_data.setdefault("gruenstreifen", {})
+        gruenstreifen = Draw.settings_data.setdefault("gruenstreifen", {})
         with scoping():
             breite = gruenstreifen.setdefault("breite", {})
             with scoping():
