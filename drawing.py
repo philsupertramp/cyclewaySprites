@@ -36,12 +36,16 @@ class Drawing:
     def draw(self: 'Drawing'):
         """ if all data to be used is set, call draw() """
         width = 0
+        widths = list()
 
         way: Way
         for way in self.ways:
             elem: WayElement
+            thisWidth = 0
             for elem in way.get_elements():
                 width += elem.width()
+                thisWidth += elem.width()
+            widths.append(thisWidth)
 
         self.svg_obj = svgwrite.Drawing(self.file_name,
                                         profile = 'full',
